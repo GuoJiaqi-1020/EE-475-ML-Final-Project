@@ -5,7 +5,7 @@ from mpl_toolkits.mplot3d import Axes3D
 from IPython.display import clear_output
 from matplotlib import gridspec
 import autograd.numpy as np
-from mlrefined_libraries.JSAnimation_slider_only import IPython_display_slider_only
+from lib.JSAnimation_slider_only import IPython_display_slider_only
 import copy
 import time
 import bisect

@@ -1,5 +1,5 @@
 from matplotlib import pyplot as plt
-from mlrefined_libraries.nonlinear_superlearn_library.recursive_tree_lib.ClassificationTree import ClassificationStump
+from lib.nonlinear_superlearn_library.recursive_tree_lib.ClassificationTree import ClassificationStump
 import autograd.numpy as np
 import copy
 

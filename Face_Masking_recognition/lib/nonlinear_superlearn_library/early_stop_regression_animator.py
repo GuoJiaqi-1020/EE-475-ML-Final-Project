@@ -3,7 +3,7 @@ import matplotlib.pyplot as plt
 from matplotlib import gridspec
 from matplotlib.ticker import FormatStrFormatter
 import matplotlib.animation as animation
-from mlrefined_libraries.JSAnimation_slider_only import IPython_display_slider_only
+from lib.JSAnimation_slider_only import IPython_display_slider_only
 from mpl_toolkits.mplot3d import Axes3D
 from IPython.display import clear_output
 from matplotlib.ticker import MaxNLocator, FuncFormatter

@@ -6,7 +6,7 @@ import math
 import time
 
 # import custom JS animator
-from mlrefined_libraries.JSAnimation_slider_only import IPython_display_slider_only
+from lib.JSAnimation_slider_only import IPython_display_slider_only
  
 # import standard plotting and animation
 import matplotlib.pyplot as plt

@@ -2,8 +2,8 @@
 import copy
 import sys
 sys.path.append('../')
-from mlrefined_libraries import math_optimization_library as optlib
-from mlrefined_libraries import superlearn_library as superlearn
+from lib import math_optimization_library as optlib
+from lib import superlearn_library as superlearn
 import autograd.numpy as np
 
 # demos for this notebook

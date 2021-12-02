@@ -1,5 +1,5 @@
 # import custom JS animator
-from mlrefined_libraries.JSAnimation_slider_only import IPython_display_slider_only
+from lib.JSAnimation_slider_only import IPython_display_slider_only
 import numpy as np
 import time
 

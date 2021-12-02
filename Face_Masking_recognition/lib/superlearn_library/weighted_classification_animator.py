@@ -3,7 +3,7 @@ import autograd.numpy as np                 # Thinly-wrapped numpy
 
 # import custom JS animator
 import sys
-from mlrefined_libraries.JSAnimation_slider_only import IPython_display_slider_only
+from lib.JSAnimation_slider_only import IPython_display_slider_only
 from IPython.display import clear_output
 
 # import standard plotting and animation

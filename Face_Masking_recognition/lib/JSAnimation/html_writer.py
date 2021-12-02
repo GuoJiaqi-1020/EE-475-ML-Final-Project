@@ -172,21 +172,21 @@ JS_INCLUDE = """
 
       switch(mode){
           case 'reverse':
-              document.getElementById("reverse-button"+id).src = "../../mlrefined_libraries/JSAnimation/icons/reverse-filled.png";
-              document.getElementById("pause-button"+id).src =  "../../mlrefined_libraries/JSAnimation/icons/pause.png";
-              document.getElementById("play-button"+id).src =  "../../mlrefined_libraries/JSAnimation/icons/play.png";
+              document.getElementById("reverse-button"+id).src = "../../lib/JSAnimation/icons/reverse-filled.png";
+              document.getElementById("pause-button"+id).src =  "../../lib/JSAnimation/icons/pause.png";
+              document.getElementById("play-button"+id).src =  "../../lib/JSAnimation/icons/play.png";
               break;
             
           case 'pause':   
-              document.getElementById("reverse-button"+id).src =  "../../mlrefined_libraries/JSAnimation/icons/reverse.png";
-              document.getElementById("pause-button"+id).src =  "../../mlrefined_libraries/JSAnimation/icons/pause-filled.png";
-              document.getElementById("play-button"+id).src =  "../../mlrefined_libraries/JSAnimation/icons/play.png";
+              document.getElementById("reverse-button"+id).src =  "../../lib/JSAnimation/icons/reverse.png";
+              document.getElementById("pause-button"+id).src =  "../../lib/JSAnimation/icons/pause-filled.png";
+              document.getElementById("play-button"+id).src =  "../../lib/JSAnimation/icons/play.png";
               break;
             
            case 'play': 
-               document.getElementById("reverse-button"+id).src =  "../../mlrefined_libraries/JSAnimation/icons/reverse.png";
-               document.getElementById("pause-button"+id).src =  "../../mlrefined_libraries/JSAnimation/icons/pause.png";
-               document.getElementById("play-button"+id).src =  "../../mlrefined_libraries/JSAnimation/icons/play-filled.png";
+               document.getElementById("reverse-button"+id).src =  "../../lib/JSAnimation/icons/reverse.png";
+               document.getElementById("pause-button"+id).src =  "../../lib/JSAnimation/icons/pause.png";
+               document.getElementById("play-button"+id).src =  "../../lib/JSAnimation/icons/play-filled.png";
                break;
            }
       }
@@ -196,7 +196,7 @@ JS_INCLUDE = """
 
 DISPLAY_TEMPLATE = """ 
 
-<link rel="stylesheet" type="text/css" href="../../mlrefined_libraries/JSAnimation/icons/mystyle.css">
+<link rel="stylesheet" type="text/css" href="../../lib/JSAnimation/icons/mystyle.css">
 
 <div class="animation" align="center">
     

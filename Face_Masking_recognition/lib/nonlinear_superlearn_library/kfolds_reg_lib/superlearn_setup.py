@@ -11,7 +11,7 @@ from . import cost_functions
 from . import normalizers
 
 ### animation libs ###
-from mlrefined_libraries.JSAnimation_slider_only import IPython_display_slider_only
+from lib.JSAnimation_slider_only import IPython_display_slider_only
 import matplotlib.animation as animation
 from IPython.display import clear_output
 import matplotlib.patches as mpatches
