@@ -10,7 +10,7 @@ import copy
 import autograd.numpy as np
 
 # import optimizer class from same library
-from mlrefined_libraries.math_optimization_library import optimizers
+from lib.math_optimization_library import optimizers
 
 class Visualizer:
     '''

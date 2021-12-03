@@ -87,7 +87,7 @@ JS_INCLUDE = """
 DISPLAY_TEMPLATE = """
 
 <!-- slider -->
-<link rel="stylesheet" type="text/css" href="../../mlrefined_libraries/JSAnimation_slider_only/icons/mystyle.css">
+<link rel="stylesheet" type="text/css" href="../../lib/JSAnimation_slider_only/icons/mystyle.css">
 
 <div class= "animation" align="center">
     <img id="_anim_img{id}">

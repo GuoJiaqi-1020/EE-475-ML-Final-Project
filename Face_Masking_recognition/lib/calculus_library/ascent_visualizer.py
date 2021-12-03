@@ -10,7 +10,7 @@ from matplotlib.text import Annotation
 from mpl_toolkits.mplot3d.proj3d import proj_transform
 
 # import custom JS animator
-from mlrefined_libraries.JSAnimation_slider_only import IPython_display_slider_only
+from lib.JSAnimation_slider_only import IPython_display_slider_only
 import matplotlib.animation as animation
 import time
 import math
