@@ -195,7 +195,7 @@ class MNIST_Classification(object):
 
 if __name__ == "__main__":
     data_name = ['Correct.npy', 'Incorrect.npy', 'NoMask.npy', ]
-    mnist = MNIST_Classification(data_name, img_size=[20, 20])
+    mnist = MNIST_Classification(data_name, img_size=[100, 100])
     N = mnist.x_rand.shape[0]
     C = len(np.unique(mnist.y_rand))
     w = 0.1 * np.random.randn(N + 1, C)
