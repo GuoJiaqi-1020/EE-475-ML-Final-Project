@@ -1,7 +1,11 @@
+import sys
 from matplotlib import pyplot as plt
 from lib.nonlinear_superlearn_library.recursive_tree_lib.ClassificationTree import ClassificationStump
+from lib import edge_extract
 import autograd.numpy as np
 import copy
+
+sys.path.append('..')
 
 
 class Tree:
@@ -19,10 +23,18 @@ class Tree:
 
 
 class Random_Forest_Algorithm:
-    def __init__(self, csvname, depth, train_portion):
-        data = np.loadtxt(csvname, delimiter=',')
-        self.x = data[:-1, :]
-        self.y = data[-1:, :]
+    def __init__(self, data_name, depth, train_portion, img_size):
+        self.gray = []
+        self.red = []
+        self.blue = []
+        self.green = []
+        file_path = "../Data/Pixel" + str(img_size[0]) + "/"
+        x, y = self.fetchData(file_path, data_name, img_size)
+        self.feature_extraction(x, img_size)
+        self.x = self.hog_extractor(np.array(self.gray).T)
+        print("feature extraction finished")
+
+        self.y = y
         self.depth = depth
         self.colors = ['salmon', 'cornflowerblue', 'lime', 'bisque', 'mediumaquamarine', 'b', 'm', 'g']
         self.plot_colors = ['lime', 'violet', 'orange', 'lightcoral', 'chartreuse', 'aqua', 'deeppink']
@@ -39,6 +51,70 @@ class Random_Forest_Algorithm:
         # compute train / valid errors
         self.compute_train_val_accuracies()
         self.best_depth = np.argmax(self.valid_accuracies)
+
+    @staticmethod
+    def fetchData(file_path, data_name, img_size):
+        y = []
+        x = np.empty(shape=(0, img_size[0], img_size[1], 3))
+        tag = 0
+        number = 0
+        for name in data_name:
+            data_subset = np.load(file_path + name)
+            x = np.append(x, data_subset, axis=0)
+            y.extend(np.shape(data_subset)[0] * [tag])
+            number += np.shape(data_subset)[0]
+            tag += 1
+        return x, np.reshape(np.array(y), (1, number))
+
+    def feature_extraction(self, data, img_size):
+        for i in range(np.shape(data)[0]):
+            self.gray_image(data[i, :], img_size)
+
+    def gray_image(self, img, img_size):
+        blue = []
+        green = []
+        red = []
+        for i in range(img_size[0]):
+            for j in range(img_size[1]):
+                red.append(img[i][j][0])
+                green.append(img[i][j][1])
+                blue.append(img[i][j][2])
+        gray = list(0.07 * np.array(blue) + 0.72 * np.array(green) + 0.21 * np.array(red))
+        self.gray.append(gray)
+        self.red.append(red)
+        self.green.append(green)
+        self.blue.append(blue)
+
+    @staticmethod
+    def hog_extractor(x):
+        kernels = np.array([
+            [[-1, -1, -1],
+             [0, 0, 0],
+             [1, 1, 1]],
+            [[-1, -1, 0],
+             [-1, 0, 1],
+             [0, 1, 1]],
+            [[-1, 0, 1],
+             [-1, 0, 1],
+             [-1, 0, 1]],
+            [[0, 1, 1],
+             [-1, 0, 1],
+             [-1, -1, 0]],
+            [[1, 0, -1],
+             [1, 0, -1],
+             [1, 0, -1]],
+            [[0, -1, -1],
+             [1, 0, -1],
+             [1, 1, 0]],
+            [[1, 1, 1],
+             [0, 0, 0],
+             [-1, -1, -1]],
+            [[1, 1, 0],
+             [1, 0, -1],
+             [0, -1, -1]]])
+        extractor = edge_extract.tensor_conv_layer()
+        x_transformed = extractor.conv_layer(x.T, kernels).T
+        return x_transformed
 
     def make_train_val_split(self, train_portion):
         self.train_portion = train_portion
@@ -223,16 +299,17 @@ def plot(y, label):
 
 
 if __name__ == "__main__":
-    file_path = '../mlrefined_datasets/nonlinear_superlearn_datasets/new_circle_data.csv'
+    # xx = np.load('testdata.npy')
+    data_name = ['Correct.npy', 'Incorrect.npy', 'NoMask.npy', ]
     trees = []
     train_acc = []
     valid_acc = []
     num_trees = 5
-    depth = 7
-    train_portion = 0.66
+    depth = 3
+    train_portion = 0.67
     for i in range(num_trees):
         print("training fold: " + str(i))
-        tree = Random_Forest_Algorithm(file_path, depth, train_portion=train_portion)
+        tree = Random_Forest_Algorithm(data_name, depth, train_portion=train_portion, img_size=[20, 20])
         trees.append(tree)
         train_acc.append(tree.train_accuracies)
         valid_acc.append(tree.valid_accuracies)
@@ -240,5 +317,5 @@ if __name__ == "__main__":
     plot(train_acc, label='Training set accuracy')
     plot(valid_acc, label='Validation set accuracy')
     # Draw 5+1 models all in one
-    tree = Random_Forest_Algorithm(file_path, depth, train_portion=1)
+    tree = Random_Forest_Algorithm(data_name, depth, train_portion=1, img_size=[20, 20])
     tree.draw_fused_model(runs=trees)
