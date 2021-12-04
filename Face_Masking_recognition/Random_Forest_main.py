@@ -305,7 +305,7 @@ if __name__ == "__main__":
     train_acc = []
     valid_acc = []
     num_trees = 5
-    depth = 3
+    depth = 7
     train_portion = 0.67
     for i in range(num_trees):
         print("training fold: " + str(i))
