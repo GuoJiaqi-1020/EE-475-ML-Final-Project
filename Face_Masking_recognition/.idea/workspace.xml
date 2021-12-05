@@ -2,6 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="d4cc3789-1cde-4591-af08-309639c758ea" name="Changes" comment="2021/12/3 17:03 Guojiaqi: Reupload the fail push(without 100-size img)">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Conventional_Ml_Method.py" beforeDir="false" afterPath="$PROJECT_DIR$/Conventional_Ml_Method.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Random_Forest_main.py" beforeDir="false" afterPath="$PROJECT_DIR$/Random_Forest_main.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -171,6 +173,15 @@
     <option name="LAST_COMMIT_MESSAGE" value="2021/12/3 17:03 Guojiaqi: Reupload the fail push(without 100-size img)" />
   </component>
   <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/Conventional_Ml_Method.py</url>
+          <line>161</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
     <watches-manager>
       <configuration name="PythonConfigurationType">
         <watch expression="test_data" />

@@ -27,7 +27,7 @@ def multiclass_softmax(w, x, y, iter):
     return cost / float(np.size(y_p))
 
 
-class MNIST_Classification(object):
+class FaceMask_Classification(object):
     def __init__(self, data_name, img_size):
         self.gray = []
         self.red = []
@@ -195,25 +195,25 @@ class MNIST_Classification(object):
 
 if __name__ == "__main__":
     data_name = ['Correct.npy', 'Incorrect.npy', 'NoMask.npy', ]
-    mnist = MNIST_Classification(data_name, img_size=[100, 100])
-    N = mnist.x_rand.shape[0]
-    C = len(np.unique(mnist.y_rand))
+    FaceMask = FaceMask_Classification(data_name, img_size=[20, 20])
+    N = FaceMask.x_rand.shape[0]
+    C = len(np.unique(FaceMask.y_rand))
     w = 0.1 * np.random.randn(N + 1, C)
-    weight_his, cost_his = mnist.gradient_descent(mnist.cost_function, w, mnist.x_rand, mnist.y_rand, alpha=0.02,
+    weight_his, cost_his = FaceMask.gradient_descent(FaceMask.cost_function, w, FaceMask.x_rand, FaceMask.y_rand, alpha=0.02,
                                                   max_its=100, batch_size=300)
-    N = mnist.x_edge.shape[0]
+    N = FaceMask.x_edge.shape[0]
     w = 0.1 * np.random.randn(N + 1, C)
-    weight_edge_his, cost_edge_his = mnist.gradient_descent(mnist.cost_function, w, mnist.x_edge, mnist.y_rand,
+    weight_edge_his, cost_edge_his = FaceMask.gradient_descent(FaceMask.cost_function, w, FaceMask.x_edge, FaceMask.y_rand,
                                                             alpha=0.02,
                                                             max_its=100, batch_size=300)
-    mis1 = mnist.misclass_counting(mnist.x_rand, mnist.y_rand, weight_his)
-    mnist.confusion_matrix(mis1, mnist.x_rand, mnist.y_rand, weight_his,
+    mis1 = FaceMask.misclass_counting(FaceMask.x_rand, FaceMask.y_rand, weight_his)
+    FaceMask.confusion_matrix(mis1, FaceMask.x_rand, FaceMask.y_rand, weight_his,
                            labels=["Correct Masking", "Incorrect Masking", "No Masking"],
                            normalize=True,
                            title="Confusion matrix: Raw Dataset")
 
-    mis2 = mnist.misclass_counting(mnist.x_edge, mnist.y_rand, weight_edge_his)
-    mnist.confusion_matrix(mis2, mnist.x_edge, mnist.y_rand, weight_edge_his,
+    mis2 = FaceMask.misclass_counting(FaceMask.x_edge, FaceMask.y_rand, weight_edge_his)
+    FaceMask.confusion_matrix(mis2, FaceMask.x_edge, FaceMask.y_rand, weight_edge_his,
                            labels=["Correct Masking", "Incorrect Masking", "No Masking"],
                            normalize=True,
                            title="Confusion matrix: HoG Dataset")
